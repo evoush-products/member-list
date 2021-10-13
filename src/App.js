@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
-import { Home, About } from "./pages";
+import { Home, Product } from "./pages";
 import { Header, Particle } from "./components";
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
         >
           <Header />
           <Switch>
-            <Route path="/about" component={About} />
+            <Route path="/product" component={Product} />
             <Route path="/" component={Home} />
           </Switch>
         </div>

@@ -1,0 +1,9 @@
+.card-about {
+  width: 100%;
+  background: rgba(211, 200, 200, 0.5);
+}
+@media (min-width: 992px) {
+  .card-about {
+    background: rgba(211, 200, 200, 0.5);
+  }
+}

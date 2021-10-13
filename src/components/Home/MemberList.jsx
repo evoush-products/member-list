@@ -24,24 +24,39 @@ const MemberList = (props) => {
   return (
     <>
       {loading ? (
-        <span classNameName="badge bg-danger">Loading...</span>
+        <>
+          <span classNameName="badge bg-danger">Loading...</span>
+          <img
+            src="https://i.pinimg.com/originals/51/02/19/5102191ca922fa1e8756a346d0fce2eb.gif"
+            className="img-fluid"
+            width="150"
+          />
+        </>
       ) : (
         <>
-          <h1>{props.title}</h1>
+          <h1 className="text-center">{props.title}</h1>
           {members.data.map((member) => (
-            <div key={member.id} className="col-md-4 col-xs-6 col-sm-6 mb-5">
+            <div
+              key={member.id}
+              className="col-md-4 col-xs-12 col-sm-12 mb-3 ml-3"
+            >
               <div
                 className="card"
                 style={{
                   width: "18rem",
-                  background: "#000",
+                  background: "rgba(211, 200, 200, 0.5)",
+                  height: "20rem",
                 }}
               >
                 <img
                   src={`https://raw.githubusercontent.com/evoush-products/bahan_evoush/master/migration_db/${member.avatar}`}
                   className="card-img-top"
                   alt={member.name}
-                  style={{ width: "120px", alignItems: "center" }}
+                  style={{
+                    width: "120px",
+                    alignItems: "center",
+                    marginTop: "2rem",
+                  }}
                 />
                 <div className="card-body">
                   <h5 className="card-title">{member.name}</h5>

@@ -21,151 +21,107 @@ const Particle = () => {
           fpsLimit: 60,
           particles: {
             number: {
-              value: 0,
+              value: 88,
+              density: {
+                enable: true,
+                value_area: 700,
+              },
             },
             color: {
-              value: ["#00FFFC", "#FC00FF", "#fffc00"],
+              value: ["#aa73ff", "#f8c210", "#83d238", "#33b1f8"],
             },
             shape: {
-              type: ["circle", "square"],
+              type: "circle",
+              stroke: {
+                width: 0,
+                color: "#000000",
+              },
+              polygon: {
+                nb_sides: 15,
+              },
             },
             opacity: {
-              value: 1,
-              animation: {
-                enable: true,
-                minimumValue: 0,
-                speed: 2,
-                startValue: "max",
-                destroy: "min",
+              value: 0.5,
+              random: false,
+              anim: {
+                enable: false,
+                speed: 1.5,
+                opacity_min: 0.15,
+                sync: false,
               },
             },
             size: {
-              value: 7,
-              random: {
+              value: 2.5,
+              random: false,
+              anim: {
                 enable: true,
-                minimumValue: 3,
+                speed: 2,
+                size_min: 0.15,
+                sync: false,
               },
             },
-            links: {
-              enable: false,
-            },
-            life: {
-              duration: {
-                sync: true,
-                value: 5,
-              },
-              count: 1,
+            line_linked: {
+              enable: true,
+              distance: 110,
+              color: "#33b1f8",
+              opacity: 0.25,
+              width: 1,
             },
             move: {
               enable: true,
-              gravity: {
-                enable: true,
-                acceleration: 20,
-              },
-              speed: { min: 10, max: 20 },
-              decay: 0.1,
+              speed: 1.6,
               direction: "none",
+              random: false,
               straight: false,
-              outModes: {
-                default: "destroy",
-                top: "none",
-              },
-            },
-            rotate: {
-              value: {
-                min: 0,
-                max: 360,
-              },
-              direction: "random",
-              move: true,
-              animation: {
-                enable: true,
-                speed: 60,
-              },
-            },
-            tilt: {
-              direction: "random",
-              enable: true,
-              move: true,
-              value: {
-                min: 0,
-                max: 360,
-              },
-              animation: {
-                enable: true,
-                speed: 60,
-              },
-            },
-            roll: {
-              darken: {
-                enable: true,
-                value: 25,
-              },
-              enable: true,
-              speed: {
-                min: 15,
-                max: 25,
-              },
-            },
-            wobble: {
-              distance: 30,
-              enable: true,
-              move: true,
-              speed: {
-                min: -15,
-                max: 15,
+              out_mode: "out",
+              bounce: false,
+              attract: {
+                enable: false,
+                rotateX: 600,
+                rotateY: 1200,
               },
             },
           },
           interactivity: {
-            detectsOn: "window",
+            detect_on: "canvas",
             events: {
+              onhover: {
+                enable: false,
+                mode: "repulse",
+              },
+              onclick: {
+                enable: false,
+                mode: "push",
+              },
               resize: true,
             },
-          },
-          detectRetina: true,
-          background: {
-            color: "#232323",
-          },
-          emitters: {
-            direction: "none",
-            spawnColor: {
-              value: "#ff0000",
-              animation: {
-                h: {
-                  enable: true,
-                  offset: {
-                    min: -1.4,
-                    max: 1.4,
-                  },
-                  speed: 0.1,
-                  sync: false,
-                },
-                l: {
-                  enable: true,
-                  offset: {
-                    min: 20,
-                    max: 80,
-                  },
-                  speed: 0,
-                  sync: false,
+            modes: {
+              grab: {
+                distance: 400,
+                line_linked: {
+                  opacity: 1,
                 },
               },
-            },
-            life: {
-              count: 0,
-              duration: 0.1,
-              delay: 0.4,
-            },
-            rate: {
-              delay: 0.1,
-              quantity: 100,
-            },
-            size: {
-              width: 0,
-              height: 100,
+              bubble: {
+                distance: 400,
+                size: 40,
+                duration: 2,
+                opacity: 8,
+                speed: 3,
+              },
+              repulse: {
+                distance: 200,
+                duration: 0.4,
+              },
+              push: {
+                particles_nb: 4,
+              },
+              remove: {
+                particles_nb: 2,
+              },
             },
           },
+          retina_detect: true,
         }}
       />
     </div>

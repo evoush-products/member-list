@@ -20,7 +20,7 @@ const Header = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="breadcrumb-item ml-3">
-            <Link to="/about">About</Link>
+            <Link to="/product">Product</Link>
           </li>
         </ol>
       </nav>
