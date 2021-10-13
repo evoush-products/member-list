@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { AllProduct, DataLeader } from "../../fetchs";
+import { DataLeader } from "../../fetchs";
+import { Loading, Pagination } from "../Molecules";
+import CardMember from "./CardMember";
 
 const MemberList = (props) => {
   const [page, setPage] = useState(1);
@@ -24,99 +26,19 @@ const MemberList = (props) => {
   return (
     <>
       {loading ? (
-        <>
-          <span classNameName="badge bg-danger">Loading...</span>
-          <img
-            src="https://i.pinimg.com/originals/51/02/19/5102191ca922fa1e8756a346d0fce2eb.gif"
-            className="img-fluid"
-            width="150"
-          />
-        </>
+        <div className="row justify-content-center">
+          <Loading anim="https://upload.wikimedia.org/wikipedia/commons/5/58/Astronaut_-_Idil_Keysan_-_Wikimedia_Giphy_stickers_2019.gif" />
+        </div>
       ) : (
         <>
-          <h1 className="text-center">{props.title}</h1>
-          {members.data.map((member) => (
-            <div
-              key={member.id}
-              className="col-md-4 col-xs-12 col-sm-12 mb-3 ml-3"
-            >
-              <div
-                className="card"
-                style={{
-                  width: "18rem",
-                  background: "rgba(211, 200, 200, 0.5)",
-                  height: "20rem",
-                }}
-              >
-                <img
-                  src={`https://raw.githubusercontent.com/evoush-products/bahan_evoush/master/migration_db/${member.avatar}`}
-                  className="card-img-top"
-                  alt={member.name}
-                  style={{
-                    width: "120px",
-                    alignItems: "center",
-                    marginTop: "2rem",
-                  }}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{member.name}</h5>
-                  <p className="card-text text-truncate">
-                    {member.quotes ? (
-                      <span
-                        dangerouslySetInnerHTML={{ __html: `${member.quotes}` }}
-                      ></span>
-                    ) : (
-                      `${member.username} belum menambahkan quotes`
-                    )}
-                  </p>
-                  <a href="#" className="btn btn-primary">
-                    Lihat Profile
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+          <CardMember members={members} title={props.title} />
 
-          <nav aria-label="Page navigation example">
-            <ul className="pagination">
-              <li
-                className="page-item"
-                onClick={() => setPage(lastPage - lastPage + 1)}
-              >
-                <a className="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              {members.links.map((link) => (
-                <div>
-                  {link.label !== "Next &raquo;" &&
-                  link.label !== "&laquo; Previous" ? (
-                    <>
-                      <li
-                        className={
-                          link.label == currPage
-                            ? "page-item active"
-                            : "page-item"
-                        }
-                        onClick={() => setPage(link.label)}
-                      >
-                        <a className="page-link" href="#">
-                          {link.label}
-                        </a>
-                      </li>
-                    </>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              ))}
-              <li className="page-item" onClick={() => setPage(lastPage)}>
-                <a className="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <Pagination
+            members={members}
+            currPage={currPage}
+            setPage={setPage}
+            lastPage={lastPage}
+          />
         </>
       )}
     </>

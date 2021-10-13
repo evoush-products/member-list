@@ -2,16 +2,13 @@ import React from "react";
 import Particles from "react-tsparticles";
 
 const Particle = () => {
+  var color = "#75A5B7";
+  var maxParticles = 80;
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-      }}
-    >
+    <div>
       <Particles
         id="tsparticles"
-        height={window.outerHeight}
+        height={window.innerHeight}
         options={{
           background: {
             color: {
@@ -21,14 +18,14 @@ const Particle = () => {
           fpsLimit: 60,
           particles: {
             number: {
-              value: 88,
+              value: maxParticles,
               density: {
                 enable: true,
-                value_area: 700,
+                value_area: maxParticles * 10 * 2,
               },
             },
             color: {
-              value: ["#aa73ff", "#f8c210", "#83d238", "#33b1f8"],
+              value: color,
             },
             shape: {
               type: "circle",
@@ -37,7 +34,7 @@ const Particle = () => {
                 color: "#000000",
               },
               polygon: {
-                nb_sides: 15,
+                nb_sides: 5,
               },
             },
             opacity: {
@@ -45,31 +42,31 @@ const Particle = () => {
               random: false,
               anim: {
                 enable: false,
-                speed: 1.5,
-                opacity_min: 0.15,
+                speed: 1,
+                opacity_min: 0.1,
                 sync: false,
               },
             },
             size: {
-              value: 2.5,
-              random: false,
+              value: 3,
+              random: true,
               anim: {
-                enable: true,
-                speed: 2,
-                size_min: 0.15,
+                enable: false,
+                speed: 40,
+                size_min: 0.1,
                 sync: false,
               },
             },
             line_linked: {
               enable: true,
-              distance: 110,
-              color: "#33b1f8",
-              opacity: 0.25,
+              distance: 150,
+              color: color,
+              opacity: 1,
               width: 1,
             },
             move: {
               enable: true,
-              speed: 1.6,
+              speed: 2,
               direction: "none",
               random: false,
               straight: false,
@@ -86,18 +83,18 @@ const Particle = () => {
             detect_on: "canvas",
             events: {
               onhover: {
-                enable: false,
-                mode: "repulse",
+                enable: true,
+                mode: "grab",
               },
               onclick: {
-                enable: false,
+                enable: true,
                 mode: "push",
               },
               resize: true,
             },
             modes: {
               grab: {
-                distance: 400,
+                distance: 140,
                 line_linked: {
                   opacity: 1,
                 },

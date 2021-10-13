@@ -4,7 +4,9 @@ const Home = () => {
   return (
     <div className="container">
       <div className="row justify-content-center">
-        <MemberList title="Leader Evoush" className="mt-5" />
+        <div className="col-lg-12 col-xs-12 col-sm-12">
+          <MemberList title="Evoush Opportunity" className="mt-5" />
+        </div>
       </div>
     </div>
   );

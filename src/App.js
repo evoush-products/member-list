@@ -7,31 +7,13 @@ import { Header, Particle } from "./components";
 const App = () => {
   return (
     <BrowserRouter>
-      <div
-        style={{
-          margin: 0,
-          padding: 0,
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        <Particle />
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            color: "#fff",
-          }}
-        >
-          <Header />
-          <Switch>
-            <Route path="/product" component={Product} />
-            <Route path="/" component={Home} />
-          </Switch>
-        </div>
+      <Particle />
+      <div id="content-evoush">
+        <Header />
+        <Switch>
+          <Route path="/product" component={Product} />
+          <Route path="/" component={Home} />
+        </Switch>
       </div>
     </BrowserRouter>
   );

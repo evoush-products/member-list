@@ -13,7 +13,13 @@ const Product = () => {
     <>
       <div className="container">
         <div className="row justify-content-center">
-          <ProductLists products={products} />
+          <div className="col-lg-12 col-xs-12 col-sm-12">
+            <ProductLists
+              title="Evoush Products"
+              products={products}
+              className="mt-5"
+            />
+          </div>
         </div>
       </div>
     </>

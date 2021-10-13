@@ -1,19 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+function slice(lists, index, to) {
+  const newlists = lists.slice(index, to);
+  return newlists;
+}
 
 const ProductLists = (props) => {
-  const products = props.products;
-  console.log(products);
+  const [products, setProducts] = useState([]);
+  let [page, setPage] = useState(1);
+  useEffect(() => {
+    console.log(page);
+    switch (page) {
+      case 1:
+        setProducts(props.products.slice(0, 6));
+        break;
+
+      case 2:
+        setProducts(props.products.slice(6, 12));
+        break;
+      case 3:
+        setProducts(props.products.slice(12, 14));
+        break;
+    }
+  }, [products]);
   return (
-    <div>
-      {products.map((product) => (
-        <>
-          <div className="col-lg-4 col-xs-12 col-sm-12">
-            <div className="card card-about mb-3">
+    <div class="content-product">
+      <div className="row justify-content-center">
+        <div className="col-lg-8 col-xs-8 col-sm-12 mb-5 mt-5">
+          <h1 className="text-center">{props.title}</h1>
+          <p>
+            Evoush didukung dengan brand-brand product kosmetik dan nutrisi yang
+            kami produksi di pabrik sendiri, yang kualitas dan manfaatnya telah
+            terbukti menjadi alasan kuat untuk membawa anda menuju kesuksesan
+            yang gilang-gemilang. <br />
+          </p>
+        </div>
+      </div>
+
+      {page}
+
+      <div className="row justify-content-center">
+        {products.map((product) => (
+          <div className="col-md-4">
+            <div className="card mb-3 card-evoush">
               <div className="row g-0">
                 <div className="col-md-4">
                   <img
                     src={product.assets[0].url}
-                    className="img-fluid rounded-start"
+                    class="img-fluid rounded-start"
                   />
                 </div>
                 <div className="col-md-8">
@@ -25,17 +59,39 @@ const ProductLists = (props) => {
                       little bit longer.
                     </p>
                     <p className="card-text">
-                      <small className="text-muted">
-                        Last updated 3 mins ago
-                      </small>
+                      <small class="text-muted">Last updated 3 mins ago</small>
                     </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </>
-      ))}
+        ))}
+      </div>
+      <div className="row justify-content-center">
+        <div className="col-lg-12">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li
+                className={page <= 1 ? "page-item disabled" : "page-item"}
+                onClick={() => setPage(page >= 1 ? (page -= 1) : page)}
+              >
+                <a class="page-link" href="#">
+                  Previous
+                </a>
+              </li>
+              <li
+                className={page >= 3 ? "page-item disable" : "page-item"}
+                onClick={() => setPage(page >= 3 ? page : (page += 1))}
+              >
+                <a class="page-link" href="#">
+                  Next
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </div>
   );
 };
