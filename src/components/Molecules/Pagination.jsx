@@ -26,7 +26,7 @@ const Pagination = (props) => {
                   <>
                     <li
                       className={
-                        link.label == currPage
+                        link.label === currPage
                           ? "page-item active"
                           : "page-item"
                       }

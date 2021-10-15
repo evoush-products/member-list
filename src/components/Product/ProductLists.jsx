@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Loading } from "../Molecules";
 
-function slice(lists, index, to) {
-  const newlists = lists.slice(index, to);
-  return newlists;
-}
-
 const ProductLists = (props) => {
   const [products, setProducts] = useState([]);
   let [page, setPage] = useState(1);
@@ -22,6 +17,7 @@ const ProductLists = (props) => {
       case 2:
         setProducts(props.products.slice(6, 12));
         break;
+
       case 3:
         setProducts(props.products.slice(12, 14));
         break;
