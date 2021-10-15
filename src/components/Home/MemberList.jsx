@@ -7,7 +7,6 @@ const MemberList = (props) => {
   const [page, setPage] = useState(1);
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [firstPage, setFirst] = useState(0);
   const [currPage, setcurrPage] = useState(0);
   const [lastPage, setlastPage] = useState(0);
 
@@ -17,7 +16,6 @@ const MemberList = (props) => {
         setLoading(false);
       }, 1500);
       setMembers(member);
-      setFirst(members.from);
       setcurrPage(members.current_page);
       setlastPage(members.last_page);
     });
