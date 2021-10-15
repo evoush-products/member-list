@@ -2,6 +2,7 @@ const Pagination = (props) => {
   const members = props.members;
   const currPage = props.currPage;
   const lastPage = props.lastPage;
+  let setLoading = props.setLoading;
   return (
     <div>
       <div className="text-xs-center">
@@ -9,7 +10,10 @@ const Pagination = (props) => {
           <ul className="pagination justify-content-center">
             <li
               className="page-item"
-              onClick={() => props.setPage(lastPage - lastPage + 1)}
+              onClick={() => {
+                setLoading(true);
+                props.setPage(lastPage - lastPage + 1);
+              }}
             >
               <a className="page-link" href="#" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
@@ -26,7 +30,10 @@ const Pagination = (props) => {
                           ? "page-item active"
                           : "page-item"
                       }
-                      onClick={() => props.setPage(link.label)}
+                      onClick={() => {
+                        setLoading(true);
+                        props.setPage(link.label);
+                      }}
                     >
                       <a className="page-link" href="#">
                         {link.label}
@@ -38,7 +45,13 @@ const Pagination = (props) => {
                 )}
               </div>
             ))}
-            <li className="page-item" onClick={() => props.setPage(lastPage)}>
+            <li
+              className="page-item"
+              onClick={() => {
+                setLoading(true);
+                props.setPage(lastPage);
+              }}
+            >
               <a className="page-link" href="#" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
               </a>

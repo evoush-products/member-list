@@ -11,7 +11,6 @@ const MemberList = (props) => {
   const [currPage, setcurrPage] = useState(0);
   const [lastPage, setlastPage] = useState(0);
 
-  console.log(members);
   useEffect(() => {
     DataLeader(page).then((member) => {
       setTimeout(() => {
@@ -23,11 +22,13 @@ const MemberList = (props) => {
       setlastPage(members.last_page);
     });
   }, [members]);
+
   return (
     <>
       {loading ? (
         <div className="row justify-content-center">
-          <Loading anim="https://upload.wikimedia.org/wikipedia/commons/5/58/Astronaut_-_Idil_Keysan_-_Wikimedia_Giphy_stickers_2019.gif" />
+          {/* <Loading anim="https://upload.wikimedia.org/wikipedia/commons/5/58/Astronaut_-_Idil_Keysan_-_Wikimedia_Giphy_stickers_2019.gif" /> */}
+          <Loading anim="https://thumbs.gfycat.com/AdoredRawHaddock-size_restricted.gif" />
         </div>
       ) : (
         <>
@@ -38,6 +39,7 @@ const MemberList = (props) => {
             currPage={currPage}
             setPage={setPage}
             lastPage={lastPage}
+            setLoading={setLoading}
           />
         </>
       )}

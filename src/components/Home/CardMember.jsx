@@ -6,11 +6,11 @@ const CardMember = (props) => {
         <div className="col-lg-8 col-xs-8 col-sm-12 mb-5">
           <h1 className="text-center">{props.title}</h1>
           <p>
-            Perkenalkan kami PT. Pineleng Indah Cemerlang dengan bangga
-            mempersembahkan merk dagang kami yang sangat visioner di tahun ini,
-            semangat kami dalam membangun mitra bisnis yang handal karena bagi
-            kami sebuah team adalah keluarga yang mengedepankan solid bersama
-            menuju sukses. <br />
+            Kami PT. Pineleng Indah Cemerlang dengan bangga mempersembahkan merk
+            dagang kami yang sangat visioner di tahun ini, semangat kami dalam
+            membangun mitra bisnis yang handal karena bagi kami sebuah team
+            adalah keluarga yang mengedepankan solid bersama menuju sukses.{" "}
+            <br />
           </p>
         </div>
       </div>
@@ -33,6 +33,17 @@ const CardMember = (props) => {
               />
               <div className="card-body">
                 <h5 className="card-title">{member.name}</h5>
+
+                <ul className="badges">
+                  <li>
+                    {member.achievements.includes("STAR SAPHIRE") ? (
+                      <span className="badge bg-primary">STAR SAPHIRE</span>
+                    ) : (
+                      <span className="badge bg-success">SAPHIRE</span>
+                    )}
+                  </li>
+                </ul>
+
                 <p className="card-text text-truncate">
                   {member.quotes ? (
                     <span
@@ -44,7 +55,10 @@ const CardMember = (props) => {
                     `${member.username} belum menambahkan quotes`
                   )}
                 </p>
-                <a href="#" className="btn btn-primary">
+                <a
+                  href={`https://evoush.com/member/${member.username}`}
+                  className="btn btn-primary btn-profile"
+                >
                   Lihat Profile
                 </a>
               </div>

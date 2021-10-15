@@ -8,7 +8,6 @@ const Particle = () => {
     <div>
       <Particles
         id="tsparticles"
-        height={window.innerHeight}
         options={{
           background: {
             color: {

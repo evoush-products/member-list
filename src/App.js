@@ -7,6 +7,7 @@ import { Header, Particle } from "./components";
 const App = () => {
   return (
     <BrowserRouter>
+      {/* <div id="tsparticles"> */}
       <Particle />
       <div id="content-evoush">
         <Header />
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" component={Home} />
         </Switch>
       </div>
+      {/* </div> */}
     </BrowserRouter>
   );
 };

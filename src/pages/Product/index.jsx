@@ -4,9 +4,16 @@ import { ProductLists } from "../../components";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     AllProduct("https://evoush-mock-api.herokuapp.com/products").then(
-      (product) => setProducts(product.data)
+      (product) => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 2500);
+        setProducts(product.data);
+      }
     );
   }, [products]);
   return (
@@ -17,6 +24,8 @@ const Product = () => {
             <ProductLists
               title="Evoush Products"
               products={products}
+              loading={loading}
+              setLoading={setLoading}
               className="mt-5"
             />
           </div>

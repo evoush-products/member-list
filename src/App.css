@@ -6,14 +6,17 @@ canvas {
 #tsparticles {
   position: absolute;
   width: 100%;
-  max-height: 100%;
-  background-image: url(https://marcbruederlin.github.io/particles.js/img/background.jpg)
-    no-repeat center center fixed;
-  background-size: 100% 100%;
+  height: 5024px;
+  /* background-image: url(https://marcbruederlin.github.io/particles.js/img/background.jpg) */
+  /* no-repeat center center fixed; */
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-color: black;
+  background-size: cover;
 }
 #content-evoush {
-  margin-top: 2rem;
   position: absolute;
+  margin-top: 2rem;
   width: 100%;
   height: 100%;
   /* padding: 2rem 3rem; */
@@ -29,6 +32,60 @@ canvas {
   font-family: "Open Sans", sans-serif;
 }
 
+.card-evoush img {
+  margin-left: 6.5rem;
+}
+
+.card-evoush h1,
+h2,
+h3,
+h4,
+h5 {
+  margin-left: 5.5rem;
+  text-transform: capitalize;
+  font-size: 21px;
+}
+
+.card-product .card-body {
+  background: rgba(32, 27, 37, 0.85);
+}
+
+.badges li {
+  list-style: none;
+  display: flex;
+}
+
+.badges li span {
+  margin-left: 5rem;
+}
+
+.btn-profile {
+  margin-left: 5rem;
+}
+
+.breadcrumb {
+  margin-left: 5.5rem;
+  margin-bottom: 1rem;
+  font-size: 21px;
+}
+.breadcrumb li a {
+  color: rgb(199, 191, 191);
+}
+.breadcrumb li a:hover {
+  color: tomato;
+}
+.card-product img {
+  width: 350px;
+  height: 100%;
+}
+.card-product .card-body {
+  width: 355px;
+  margin-top: 0.1rem;
+  margin-left: -0.1rem;
+}
+.card-product .card-body h5 {
+  margin-left: -0.2rem;
+}
 @media (min-width: 992px) {
   canvas {
     display: block;
@@ -38,8 +95,8 @@ canvas {
   #tsparticles {
     position: absolute;
     width: 100%;
-    height: 100%;
-    background-image: url(https://marcbruederlin.github.io/particles.js/img/background.jpg);
+    height: 2024px;
+    /* background-image: url(https://marcbruederlin.github.io/particles.js/img/background.jpg); */
     background-position: bottom;
     background-repeat: no-repeat;
     background-color: black;
@@ -61,5 +118,27 @@ canvas {
   }
   .card-evoush h5 {
     text-transform: capitalize;
+  }
+  .breadcrumb {
+    margin-left: 37rem;
+    margin-bottom: 5rem;
+    font-size: 31px;
+  }
+  .breadcrumb li a {
+    color: rgb(199, 191, 191);
+  }
+  .breadcrumb li a:hover {
+    color: tomato;
+  }
+  .card-product img {
+    width: 200px;
+    height: 100%;
+  }
+  .card-product .card-body {
+    width: 217px;
+    margin-left: 3.8rem;
+  }
+  .card-product .card-body h5 {
+    margin-left: -0.2rem;
   }
 }

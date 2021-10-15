@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Loading } from "../Molecules";
 
 function slice(lists, index, to) {
   const newlists = lists.slice(index, to);
@@ -8,6 +9,9 @@ function slice(lists, index, to) {
 const ProductLists = (props) => {
   const [products, setProducts] = useState([]);
   let [page, setPage] = useState(1);
+  let loading = props.loading;
+  let setLoading = props.setLoading;
+
   useEffect(() => {
     console.log(page);
     switch (page) {
@@ -25,73 +29,84 @@ const ProductLists = (props) => {
   }, [products]);
   return (
     <div class="content-product">
-      <div className="row justify-content-center">
-        <div className="col-lg-8 col-xs-8 col-sm-12 mb-5 mt-5">
-          <h1 className="text-center">{props.title}</h1>
-          <p>
-            Evoush didukung dengan brand-brand product kosmetik dan nutrisi yang
-            kami produksi di pabrik sendiri, yang kualitas dan manfaatnya telah
-            terbukti menjadi alasan kuat untuk membawa anda menuju kesuksesan
-            yang gilang-gemilang. <br />
-          </p>
+      {loading ? (
+        <div className="row justify-content-center">
+          <Loading anim="https://thumbs.gfycat.com/AdoredRawHaddock-size_restricted.gif" />
         </div>
-      </div>
+      ) : (
+        <>
+          <div className="row justify-content-center">
+            <div className="col-lg-8 col-xs-8 col-sm-12 mb-5 mt-5">
+              <h1 className="text-center">{props.title}</h1>
+              <p>
+                Evoush didukung dengan brand-brand product kosmetik dan nutrisi
+                yang kami produksi di pabrik sendiri, yang kualitas dan
+                manfaatnya telah terbukti menjadi alasan kuat untuk membawa anda
+                menuju kesuksesan yang gilang-gemilang. <br />
+              </p>
+            </div>
+          </div>
 
-      {page}
-
-      <div className="row justify-content-center">
-        {products.map((product) => (
-          <div className="col-md-4">
-            <div className="card mb-3 card-evoush">
-              <div className="row g-0">
-                <div className="col-md-4">
-                  <img
-                    src={product.assets[0].url}
-                    class="img-fluid rounded-start"
-                  />
-                </div>
-                <div className="col-md-8">
-                  <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </p>
-                    <p className="card-text">
-                      <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
+          <div className="row justify-content-center">
+            {products.map((product) => (
+              <div className="col-md-4">
+                <div className="card mb-3 card-product">
+                  <div className="row g-0">
+                    <div className="col-md-4">
+                      <img src={product.assets[0].url} />
+                    </div>
+                    <div className="col-md-8">
+                      <div className="card-body">
+                        <h5 className="card-title">Card title</h5>
+                        <p className="card-text">
+                          This is a wider card with supporting text below as a
+                          natural lead-in to additional content. This content is
+                          a little bit longer.
+                        </p>
+                        <p className="card-text">
+                          <small class="text-muted">
+                            Last updated 3 mins ago
+                          </small>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-lg-12">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li
+                    className={page <= 1 ? "page-item disabled" : "page-item"}
+                    onClick={() => {
+                      setLoading(true);
+                      setPage(page >= 1 ? (page -= 1) : page);
+                    }}
+                  >
+                    <a class="page-link" href="#">
+                      Previous
+                    </a>
+                  </li>
+                  <li
+                    className={page >= 3 ? "page-item disable" : "page-item"}
+                    onClick={() => {
+                      setLoading(true);
+                      setPage(page >= 3 ? page : (page += 1));
+                    }}
+                  >
+                    <a class="page-link" href="#">
+                      Next
+                    </a>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
-        ))}
-      </div>
-      <div className="row justify-content-center">
-        <div className="col-lg-12">
-          <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <li
-                className={page <= 1 ? "page-item disabled" : "page-item"}
-                onClick={() => setPage(page >= 1 ? (page -= 1) : page)}
-              >
-                <a class="page-link" href="#">
-                  Previous
-                </a>
-              </li>
-              <li
-                className={page >= 3 ? "page-item disable" : "page-item"}
-                onClick={() => setPage(page >= 3 ? page : (page += 1))}
-              >
-                <a class="page-link" href="#">
-                  Next
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };
