@@ -8,7 +8,6 @@ const ProductLists = (props) => {
   let setLoading = props.setLoading;
 
   useEffect(() => {
-    console.log(page);
     switch (page) {
       case 1:
         setProducts(props.products.slice(0, 6));
@@ -53,17 +52,16 @@ const ProductLists = (props) => {
                     </div>
                     <div className="col-md-8">
                       <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">
-                          This is a wider card with supporting text below as a
-                          natural lead-in to additional content. This content is
-                          a little bit longer.
-                        </p>
-                        <p className="card-text">
-                          <small class="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </p>
+                        <h5 className="card-title">{product.seo.title}</h5>
+                        <p className="card-text">{product.seo.description}</p>
+
+                        <a
+                          href={`https://evoush.com/product/${product.permalink}`}
+                          class="btn btn-outline-success rounded-pill"
+                          target="_blank"
+                        >
+                          View Product
+                        </a>
                       </div>
                     </div>
                   </div>
